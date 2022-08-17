@@ -1,0 +1,19 @@
+%option noyywrap
+%{
+	#include<stdio.h>
+%}
+
+%%
+[0-9] printf("Number ");
+[a-z] printf("LowerCase ");
+[A-Z] printf("UpperCase ");
+%%
+
+int main()
+{
+
+	yylex();
+	return 0;
+
+}
+

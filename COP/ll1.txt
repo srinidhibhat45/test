@@ -1,0 +1,31 @@
+encoding={'S': 0, 'C': 1, 'c': 0, 'd': 1, '$':2} table = [["S->CC", "S->CC", "0"], ["C->cC", "C->d", "0"]]
+
+input = "cdd$"
+stk = "$S"
+
+print(f"Input = {input[:-1]}")
+
+i=0
+
+print("\nSTACK\t | INPUT BUFFER | ACTION \n")
+while i <len(input):
+	print(stk, end="  \t\t\t")
+	print(input[i:], end="    \t\t") 
+	if stk[-1]== input[i] == "$":
+	print("   ACCEPT")
+	exit(0)
+elif stk[-1] input[i] != "$":
+	print("Pop")
+	stk = stk:-1]
+	i+= 1
+	else:
+
+entry = table encoding[stk[-1]]][encoding [input[i]]]
+
+if entry == "0":
+	print(" REJECT")
+else:
+	stk = stk[:-1]+ entry[3:][::-1]
+print(f"Push {entry}")
+
+# print(stk)
