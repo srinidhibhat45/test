@@ -1,0 +1,47 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+G = nx.Graph()
+graph = {
+  'Ponda' : ['Panjim','Borim'],
+  'Panjim' : ['Porvorim', 'Borim'],
+  'Borim' : ['Fatorda'],
+  'Porvorim' : [],
+  'Borim' : ['Fatorda'],
+  'Fatorda' : []
+}
+search_val='Margao'
+
+visited = [] # List to keep track of visited nodes.
+queue = []     #Initialize a queue
+
+def bfs(visited, graph, node):
+  visited.append(node)
+  queue.append(node)
+
+  while queue:
+    slo = queue.pop(0) 
+    print (s, end = " ")
+    if s==search_val:
+      print('\nFound! ')
+      break 
+
+    for neighbour in graph[s]:
+      if neighbour not in visited:
+        visited.append(neighbour)
+        queue.append(neighbour)
+
+# Driver Code
+G.add_nodes_from(["Ponda", "Panjim", "Borim", "Porvorim", "Margao", "Fatorda"])
+G.add_edge("Ponda", "Panjim",weigth=30) 
+G.add_edge("Ponda", "Borim",weigth=5),
+G.add_edge("Panjim", "Porvorim",weigth=8)
+G.add_edge("Panjim", "Margao",weigth=35)
+G.add_edge("Borim", "Fatorda",weigth=12)
+G.add_edge("Margao", "Fatorda",weigth=2)
+
+color_map = ['red' if node == 'Ponda' else 'green' for node in G] 
+nx.draw(G,with_labels = True,node_size=1200,node_color=color_map)
+nx.draw_networkx_edge_labels(G, pos)
+print("Value to be searched:"+search_val)
+print("Traversal:")
+bfs(visited, graph, 'Ponda')

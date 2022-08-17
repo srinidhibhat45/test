@@ -1,0 +1,31 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+G = nx.Graph()
+graph = {
+  'Ponda' : ['Panjim','Borim'],
+  'Panjim' : ['Porvorim', 'Borim'],
+  'Borim' : ['Fatorda'],
+  'Porvorim' : [],
+  'Borim' : ['Fatorda'],
+  'Fatorda' : []
+}
+search_val='Margao'
+
+visited = set() # Set to keep track of visited nodes.
+
+def dfs(visited, graph, node):
+    if node not in visited:
+        print (node)
+        visited.add(node)
+        for neighbour in graph[node]:
+            dfs(visited, graph, neighbour)
+
+# Driver Code
+G.add_nodes_from(["Ponda", "Panjim", "Borim", "Porvorim", "Margao", "Fatorda"])
+G.add_edge("Ponda", "Panjim",weigth=30) 
+G.add_edge("Ponda", "Borim",weigth=5),
+G.add_edge("Panjim", "Porvorim",weigth=8)
+G.add_edge("Panjim", "Margao",weigth=35)
+G.add_edge("Borim", "Fatorda",weigth=12)
+G.add_edge("Margao", "Fatorda",weigth=2)
+dfs(visited, graph, 'Ponda')

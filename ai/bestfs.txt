@@ -1,0 +1,97 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+
+graph = {
+'1':{'2':34 , '3':32},
+'2':{'3':40 , '1':34},
+'3':{'4':20 , '5':14, '1':32, '2':40},
+'4':{'5':30, '3':20},
+'5':{'6':10, '4':30, '3':14, '10':50, '11':45},
+'6':{'5':10, '8':7, '7':40},
+'7':{'9':30, '8':5, '6':40},
+'8':{'7':5, '6':7},
+'9':{'7':30, '10':20,},
+'10':{'11':15,'5':50,'9':20},
+'11':{'5':45, '10':15}
+}
+
+visited = [];
+
+def bfs(node, end_node):
+# if(node == '7'):
+# return;
+    if(node == end_node):
+        return;
+    adjacent_nodes = graph[node].keys();
+    min = 10000;
+    min_node = node;
+    for adjacent_node in adjacent_nodes:
+        if(graph[node][adjacent_node] < min ):
+            min = graph[node][adjacent_node];
+            min_node = adjacent_node;
+
+    visited.append(min_node);
+    bfs(min_node, end_node);
+    print(adjacent_nodes)
+    print(adjacent_node)
+
+# bfs('2');
+
+graph_keys = graph.keys();
+
+print("enter the start node")
+start_node = input();
+visited.append(start_node)
+print("enter the end node")
+end_node = input();
+
+# for graph_key in graph_keys:
+#     adjacent_keys = graph[graph_key].keys();
+# for adjacent_key in adjacent_keys:
+#     print("heuristic value from ",graph_key," to ",adjacent_key, " : " )
+#     graph[graph_key][adjacent_key] = int(input());
+
+
+G = nx.DiGraph();
+
+for graph_key in graph_keys:
+  adjacent_keys = graph[graph_key].keys();
+  for adjacent_key in adjacent_keys:
+    G.add_edge(graph_key, adjacent_key, weight= graph[graph_key][adjacent_key]*10, length=100 )
+
+# for node in graph_keys:
+#   G.add_node()
+
+pos = nx.spring_layout(G)
+nx.draw(G, with_labels=True, font_weight='bold', width=2.0, node_size=500, node_color='#99ccff')
+# nx.draw_networkx_edge_labels(G,pos)
+
+plt.show()
+
+bfs(start_node, end_node);
+
+map = ['green' if node in visited else 'blue' for node in G.nodes()]
+index = 0
+for node in G.nodes:
+  if node == start_node or node == end_node:
+    map[index] = 'red'
+  index+=1;
+
+
+
+# map = ['red' if node == start_node else '' for node in G]
+
+
+# for node in G.nodes():
+#   if node in visited:
+#     map.append('green')
+#   else:
+#     map.append('blue')
+
+pos = nx.spring_layout(G)
+nx.draw(G, with_labels=True, font_weight='bold', width=2.0, node_size=500, node_color=map)
+plt.show()
+print(map)
+print(G.nodes)
+
+print("the visited nodes are ", visited)
