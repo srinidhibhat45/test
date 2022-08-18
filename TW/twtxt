@@ -1,0 +1,95 @@
+***webform1.aspx.cs
+
+string name = TextBox2.Text;
+            string email = TextBox3.Text;
+
+
+            Response.Redirect("WebForm2.aspx?name="+name+"&email="+email);
+
+
+***webform2.aspx
+
+<asp:Label ID="NameBox" runat="server" Text=""></asp:Label>
+<asp:Label ID="EmailBox" runat="server" Text=""></asp:Label>
+
+
+***webform2.aspx.cs
+
+ string name = Request.QueryString["name"];
+            string email = Request.QueryString["email"];
+
+
+            NameBox.Text = "Welcome, " + name;
+            EmailBox.Text = "Your email is " + email;
+
+***calculate.aspx.cs
+  int number1 = Int32.Parse(num1.Text);
+            int number2 = Int32.Parse(num2.Text);
+            string operation = op.Text;
+
+            int answer = 0;
+
+            if (operation == "+")
+            {
+                answer = number1 + number2;
+            }
+            else if (operation=="-")
+            {
+                answer = number1 - number2;
+            }
+            else if(operation == "*")
+            {
+                answer = number1 * number2;
+            }
+            else
+            {
+                answer = number1 / number2;
+            }
+
+            result.Text = answer.ToString();
+
+***sitemap
+<siteMapNode url="~/" title="Phone"  description="">
+	  <siteMapNode url="~/WebForm1" title="Model"  description="" />
+	  <siteMapNode url="~/Calc/Default" title="Calc">
+		  
+		  <siteMapNode url="~/Calc/Calculate" title="Calculate" />
+	  </siteMapNode>
+	  
+    <siteMapNode url="" title="Version"  description="" />
+  </siteMapNode>
+
+
+***db.php
+  $conn = mysqli_connect('localhost', 'root', '', 't');
+
+
+***form.php
+<?php
+    if (isset($_POST['submit'])) {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        include 'db.php';
+
+        $sql = "INSERT INTO `users`(`email`, `password`) VALUES ('$email','$password')";
+        $m = mysqli_query($conn, $sql);
+    }
+?>
+
+
+ <h4>All users</h4> <br>
+        <?php
+            include 'db.php';
+            $sql2 = "select * from users";
+            $result = mysqli_query($conn, $sql2);
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $email = $row['email'];
+                $password = $row['password'];
+
+                echo "$email" . " ---------- " . "$password";
+                echo '<br>';
+
+            }
+        ?>
