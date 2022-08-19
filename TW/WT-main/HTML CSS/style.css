@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+div{
+    border: 1px solid red;
+    margin: 10px;
+    padding: 10px;
+    color: white;
+    width: 300px;
+}
+
+.box1{
+    background-color: red;
+    position: relative;
+}
+
+.box2{
+    background-color: black;
+    position: absolute;
+    top: 250px;
+    left: 200px;
+}
+
+.box3{
+    background-color: green;
+    position: absolute;
+    top: 500px;
+    left: 350px;
+}
+
+button{
+    padding: 10px 20px;
+    position: absolute;
+    left: 900px;
+    background-color: black;
+    color: white;
+    border: 1px solid red;
+}

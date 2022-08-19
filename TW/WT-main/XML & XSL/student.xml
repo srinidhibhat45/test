@@ -1,0 +1,18 @@
+<?xml-stylesheet type = "text/xsl" href = "student.xsl"?>
+<class>
+    <student>
+        <firstname>Vaibhav</firstname>
+        <lastname>Shanbhag</lastname>
+        <nickname>Vai</nickname>
+    </student>
+    <student>
+        <firstname>Shivam</firstname>
+        <lastname>Naik</lastname>
+        <nickname>Shiv</nickname>
+    </student>
+    <student>
+        <firstname>Vishwajeet</firstname>
+        <lastname>Tekale</lastname>
+        <nickname>Vishwai</nickname>
+    </student>
+</class>

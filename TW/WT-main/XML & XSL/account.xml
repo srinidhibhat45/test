@@ -1,0 +1,27 @@
+<?xml-stylesheet type = "text/xsl" href = "account.xsl"?>
+<bank>
+    <account>
+        <acc_no>123</acc_no>
+        <acc_type>Savings</acc_type>
+        <name>Vaibhav Shanbhag</name>
+        <balance>89999</balance>
+    </account>
+    <account>
+        <acc_no>123</acc_no>
+        <acc_type>Savings</acc_type>
+        <name>Vaibhav Shanbhag</name>
+        <balance>89999</balance>
+    </account>
+    <account>
+        <acc_no>123</acc_no>
+        <acc_type>Savings</acc_type>
+        <name>Vaibhav Shanbhag</name>
+        <balance>89999</balance>
+    </account>
+    <account>
+        <acc_no>123</acc_no>
+        <acc_type>Savings</acc_type>
+        <name>Vaibhav Shanbhag</name>
+        <balance>89999</balance>
+    </account>
+</bank>
